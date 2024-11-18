@@ -5,7 +5,9 @@
 - **Objetivo do repositório**: Repositório para os alunos colocarem a resposta ao problema proposto da avaliação de 18/11/2024
 - **Público alvo**: alunos da disciplina de SO (Sistemas Operacionais) do curso de TADS (Superior em Tecnologia em Análise e Desenvolvimento de Sistemas) no CNAT-IFRN (Instituto Federal de Educação, Ciência e Tecnologia do Rio Grande do Norte - Campus Natal-Central).
 - disciplina: **SO** Sistemas Operacionais, turma de 2024.2
+- Aluna: [Yasmim Fernandes de Oliveira Raposo](https://github.com/YasmimRaposo)
 - professor: [Leonardo A. Minora](https://github.com/leonardo-minora)
+
 
 ## Descrição inicial da tarefa
 
