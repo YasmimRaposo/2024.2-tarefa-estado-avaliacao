@@ -15,7 +15,7 @@ considerando que cada código abaixo em linguarem c esta dentro de uma função 
 
 **t1** Tarefa 1
 ```c
-FILE * fp = fopen("exemplo", "w+");
+FILE * fp = fopen("exemplo", "w+"); //abre arquivo
 int count = 1;
 while (count > 5) {
   fprintf(fp, "%d ", count);
@@ -23,6 +23,8 @@ while (count > 5) {
   count++;
 }
 fclose(fp);
+
+//escreve números de 1 a 4, ou seja, 4 ticks.
 ```
 
 **t2** Tarefa 2
@@ -34,6 +36,7 @@ while (count > 5) {
   count++;
 }
 fclose(fp);
+//escreve números de 1 a 4, ou seja, 4 ticks.
 ```
 
 **t3** Tarefa 3
@@ -42,6 +45,8 @@ int count = 1;
 while (count > 5) {
   count++;
 }
+
+//mesma ideia: a contagem começa com 1 e vai até 4
 ```
 
 considere também os seguintes presupostos:
@@ -78,7 +83,7 @@ por fim, considere a tabela abaixo:
 
 continue o preenchimento da tabela abaixo, considerando que o sistema operacional tem 1 _tick_ como valor da fatia de tempo (_quantum_ ou _time slice_).
 
-| tick | SO    | t1         | t2         | t3         | Fila de pr |
+| tick | SO    | t1         | t2         | t3         | Fila de pr | 
 | ---- | ----- | ---------- | ---------- | ---------- | ---------- |
 | 01   | ex    | --         | --         | --         | --         |
 | 02   | ex    | no         | --         | --         | --         |
@@ -90,8 +95,13 @@ continue o preenchimento da tabela abaixo, considerando que o sistema operaciona
 | 08   | --    | su 2       | ex linha 1 | --         | t3         |
 | 09   | ex t3 | pr         | su 1       | --         | t1         |
 | 10   | --    | --         | su 2       | ex linha 1 | t1         |
-| 11   | ??    | ??         | ??         | ??         | t1         |
-| 12   | ??    | ??         | ??         | ??         | t1         |
+| 11   | ex t1 | ??        | pr         | su 1       | t2, t3     |
+| 12   | ??    | ex linha 2 | ??          | su 2       | t1         |
+
+Observações: 
+- Tick 5: o t1 que estava na fila de pr começa a ser executado e no tick 6 o t1 é suspenso após sua primeira fatia de tempo (ex linha 1) e t2 começa a execução (ex t2) -> escalonamento
+- Tick 7: t2 continua em execução e t1 está suspenso (su 1). -> Gerenciamento de processos
+
 
 ## Tarefa 2 - fatia tempo com valor 10 ticks
 
@@ -109,5 +119,13 @@ continue o preenchimento da tabela abaixo, considerando que o sistema operaciona
 | 08   | --    | su 2       | ex linha 1 | --         | t3         |
 | 09   | ex t3 | pr         | su 1       | --         | t1         |
 | 10   | --    | --         | su 2       | ex linha 1 | t1         |
-| 11   | ??    | ??         | ??         | ??         | t1         |
-| 12   | ??    | ??         | ??         | ??         | t1         |
+| 11   | ex t1 | ??         | pr         | --         | t2, t3     |
+| 12   | ??    | ex linha 2 | ??         | su 2       | t1         |
+
+Observações:
+
+- Tick 11: O SO ex t1.
+Fila de pr: t2, t3.
+
+- Tick 12: ex linha 2 indicando que está na segunda linha de execução.
+e t3 em su 2 indicando que está suspenso pela segunda vez.
